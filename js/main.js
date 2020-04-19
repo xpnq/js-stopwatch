@@ -33,8 +33,11 @@ function stopwatch(command) {
 
     return number;
   }
-
+  var start = document.getElementById("start");
   if (command === "start") {
+    start.disabled = true;
+    start.classList.add("disable");
+    console.log('disabling..');
     timerId = setInterval(function() {
       seconds++;
       if (seconds === 60) {
@@ -57,6 +60,8 @@ function stopwatch(command) {
       console.log(display);
     }, 1000);
   } else if (command === "stop") {
+    start.disabled = false;
+    start.classList.remove("disable");
     clearInterval(timerId);
   }
 }
